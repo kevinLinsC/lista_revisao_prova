@@ -1,1 +1,3 @@
-# lista_revisao_prova
+# Lista de revisao para prova
+## Prithee, be careful
+## Deus nos ajude. Amém
