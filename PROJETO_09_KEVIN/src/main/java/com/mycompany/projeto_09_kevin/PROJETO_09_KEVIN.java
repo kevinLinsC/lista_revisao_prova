@@ -18,8 +18,7 @@ public class PROJETO_09_KEVIN {
         String[] produtos = {"Coca-Cola", "Guarana Jesus", "Pizza 4 Queijos", "Pizza Portuguesa", 
                              "Pizza Margherita", "Macarrao com queijo", "Macarrao com carne moida", 
                              "Macarrao com frango frito", "Torta de Limao", "Torta de Maracuja"};
-        float[] preco = {6.99, 5.99, 29.99, 26.99,
-                         32.50};
+        float[] preco = {6.99f, 5.99f, 29.99f, 26.99f, 32.50f, 21.99f, 24.99f, 24.99f, 19.99f, 19.99f};
         String nome_cliente; 
         int qtd_itens;
         
