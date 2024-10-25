@@ -52,13 +52,16 @@ public class PROJETO_09_KEVIN {
         
         // Cliente escolhe qual o numero do pedido.
         for (int i = 0; i < qtd_itens; i++) {
-            pedidos[i] = PegaNum((i + 1) + " pedido: ");
+            do {
+                pedidos[i] = PegaNum((i + 1) + " pedido: ");
+            } while (pedidos[i] > 10);
         }
         Linha();
         
         gravar.printf("Nome do cliente: " + nome_cliente); // Escreve no .txt o nome do cliente.
         gravar.printf("\n");
         gravar.printf("\nPedido do cliente:");
+        
         // Soma o total do pedido.
         for (int i = 0; i < qtd_itens; i++) {
             gravar.printf("\n" + produtos[pedidos[i] - 1]);

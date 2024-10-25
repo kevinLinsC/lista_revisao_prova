@@ -13,8 +13,39 @@ import java.io.IOException;
  */
 public class PROJETO_11_KEVIN {
 
-    public static void main(String[] args) {
-        System.out.println("Hello World!");
+    public static void main(String[] args) throws IOException {
+        int[] num;
+        int qtd_numeros;
+        int maior;
+        int menor;
+        
+        // Pede quantos numeros irão ser digitado e inicializa o vetor.
+        qtd_numeros = PegaNum("Digite a quantidade de numeros a serem digitados: ");
+        num = new int[qtd_numeros];
+        Linha();
+        
+        // Pega os números.
+        for (int i = 0; i < qtd_numeros; i++) {
+            num[i] = PegaNum("Digite o " + (i + 1) + " numero: ");
+        }
+        
+        // Inicializa o maior e menor com o primeiro número.
+        maior = num[0];
+        menor = num[0];
+        
+        // Pega o menor e o maior número.
+        for (int i = 1; i < num.length; i++) {
+            if (num[i] > maior) {
+                maior = num[i];
+            }
+            else if (num[i] < menor) {
+                menor = num[i];
+            }
+        }
+        
+        Linha();
+        System.out.println("O maior numero digitado foi: " + maior);
+        System.out.println("O menor numero digitado foi: " + menor);
     }
     
     // Pega o número, filtrando os erros.

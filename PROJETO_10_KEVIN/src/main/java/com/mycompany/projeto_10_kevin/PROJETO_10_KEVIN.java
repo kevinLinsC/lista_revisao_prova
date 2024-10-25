@@ -6,7 +6,7 @@ package com.mycompany.projeto_10_kevin;
 
 import java.io.DataInputStream;
 import java.io.IOException;
-dsada
+
 /**
  *
  * @author k.andrade
@@ -15,14 +15,39 @@ public class PROJETO_10_KEVIN {
 
     public static void main(String[] args) throws IOException {
         int qtd_clientes;
-        String[] respostas_cliente;
+        String[] generos = {"Acao", "Aventura", "Comedia", "Drama", "Espionagem", "Fantasia",
+                            "Ficcao cientifica", "Musical", "Romance", "Terror"};
+        int[] cont_genero = new int[generos.length];
+        int[] respostas_cliente;
+        int escolha;
         
+        // Pergunta quantos participantes terao e inicia o vetor.
         qtd_clientes = PegaNum("Digite a quantidade de participantes: ");
+        respostas_cliente = new int[qtd_clientes];
+        Linha();
         
-        respostas_cliente = Resp_cliente(qtd_clientes);
+        // Mostra os generos disponiveis.
+        for (int i = 0; i < generos.length; i++) {
+            System.out.println((i + 1) + " - " + generos[i]);
+        }
+        Linha();
+        
+        // Pega as respostas dos participantes.
+        for (int i = 0; i < qtd_clientes; i++) {
+            escolha = PegaNum((i + 1) + " participante: ");
+            if (escolha > 0 && escolha < generos.length) {
+                respostas_cliente[i] = escolha;
+            }
+        }
+        
+        // Conta quantas pessoas escolheram cada genero.
+        for (int i = 0; i < qtd_clientes; i++) {
+            cont_genero[respostas_cliente[i] - 1]++;
+        }
         
     }
     
+    /*
     public static String[] Resp_cliente(int qtd_clientes) throws IOException {
         DataInputStream dado;
         
@@ -37,6 +62,7 @@ public class PROJETO_10_KEVIN {
         
         return resp_cliente;
     }
+    */
     
     // Pega o número, filtrando os erros.
     public static int PegaNum(String texto) throws IOException {
@@ -56,6 +82,7 @@ public class PROJETO_10_KEVIN {
                 }
                 else {
                     System.out.println("Digite um valor positivo valido.");
+                    Linha();
                 }
             } catch (NumberFormatException e) {
                 System.out.println("Digite um numero inteiro valido.");
