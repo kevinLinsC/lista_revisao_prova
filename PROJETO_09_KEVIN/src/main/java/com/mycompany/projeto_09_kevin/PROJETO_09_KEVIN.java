@@ -8,6 +8,7 @@ import java.io.DataInputStream;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -33,6 +34,10 @@ public class PROJETO_09_KEVIN {
         nome_cliente = dado.readLine();
         Linha();
         
+        // Inicializando o local do arquivo.
+        FileWriter arquivo = new FileWriter("Pedido " + nome_cliente); 
+        PrintWriter gravar = new PrintWriter(arquivo);
+        
         qtd_itens = PegaNum("Digite a quantidade de itens a serem pedidos: ");
         Linha();
         
@@ -49,22 +54,22 @@ public class PROJETO_09_KEVIN {
         for (int i = 0; i < qtd_itens; i++) {
             pedidos[i] = PegaNum((i + 1) + " pedido: ");
         }
+        Linha();
         
-        
+        gravar.printf("Nome do cliente: " + nome_cliente); // Escreve no .txt o nome do cliente.
+        gravar.printf("\n");
+        gravar.printf("\nPedido do cliente:");
+        // Soma o total do pedido.
         for (int i = 0; i < qtd_itens; i++) {
-            System.out.println(produtos[pedidos[i] - 1]);
+            gravar.printf("\n" + produtos[pedidos[i] - 1]);
             preco_total += preco[pedidos[i] - 1];
         }
-        
-        FileWriter arquivo = new FileWriter("Pedido " + nome_cliente);
-        PrintWriter gravar = new PrintWriter(arquivo);
-        
-        gravar.printf("Nome do cliente: " + nome_cliente);
-        gravar.printf("Valor total: " + preco_total);
-        
+        gravar.printf("\n");
+        gravar.printf("\nValor total: " + preco_total); 
+
         arquivo.close();
         
-        System.out.println(preco_total);
+        JOptionPane.showMessageDialog(null, "O preço total do seu pedido é: " + preco_total);
     }
     
     // Pega o número, filtrando os erros.
